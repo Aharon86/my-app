@@ -36,3 +36,20 @@ code {
   color: yellow;
 }
 
+.box{
+  width: 100px;
+  height: 100px;
+  background: green;
+  position: relative;
+  animation: anim 10s linear infinite;
+  font-size: 20px;
+  box-sizing: border-box;
+  padding: 35px;
+}
+
+@keyframes anim{
+  0%{left:0}
+  50%{left:500px}
+  100%{left:0px}
+}
+
