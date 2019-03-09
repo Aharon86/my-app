@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './style_form.css';
 import regExp from './regExp';
 import validInput from './validInput';
+import Li from './Li';
 
 class Form extends Component{
     state = {
@@ -10,10 +11,14 @@ class Form extends Component{
             sign_in: 'not_active',
             form_1: {display: 'block'},
             form_2: {display: 'none'},
-        }
+        },
+        responseData: {}
     }
+    // componentDidMount = () => {
+    //     this.writeData();
+    // }
 
-    inputs = [];
+    inputs = {};
     myValue = {};
 
     changeSign = (e) => {
@@ -37,7 +42,6 @@ class Form extends Component{
     }
 
     validation = (e) => {
-        // console.log(e);
         var inp = e;
         if (regExp[inp.name].test(inp.value)) {
             if (inp.name === 'confirm_password') {
@@ -74,22 +78,51 @@ class Form extends Component{
             this.validation(this.inputs[key] );
         }
          // breake or not
-        for (let key in validInput.sign_in) {
-            if (!validInput.sign_in[key].valid) {
+         console.log(validInput.sign_up);
+        for (let key in validInput.sign_up) {
+            if (!validInput.sign_up[key].valid) {
                 return;
             }
         }
         // if all values are correct return standard styles
-        for (let key in validInput.sign_in) {
-            this.inputs[key].removeAttribute("style");
+        for (let key in this.inputs) {
+            this.inputs[key].className = '';
+            this.inputs[key].removeAttribute('style');
             this.inputs[key].value = '';
         }
+        console.log(this.myValue);
+        fetch("http://rest.learncode.academy/api/johnbob/friends", {
+                method: 'POST', // or 'PUT'
+                body: JSON.stringify(this.myValue), // data can be `string` or {object}!
+                headers:{
+                'Content-Type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(response => {this.setState({responseData: response})})
+            .catch(error => console.error('Error:', error));
+            // console.log(this.state.responseData);
     }
 
+    writeData = () => {
+        let arr = [];
+        for (let key in this.state.responseData) {
+            arr.push(<Li key = {key} text = {this.state.responseData[key]} id = {key}/>)
+        }
+        return arr;
+    }
+
+   
+
     render (){
+        console.log('ren');
         return (
             <div className="container">
-                <div className="item_1"></div>
+                <div className="item_1">
+                    <ul>
+                        {this.writeData()}
+                    </ul>
+                </div>
                 <div className="item_2">
                     <div className="sign">
                         <div className={this.state.sign.sign_up} id="sign_up" onClick = {this.changeSign}>Sign Up</div>

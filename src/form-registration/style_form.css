@@ -37,8 +37,12 @@ body{
     min-height: 480px;
 }
 .item_1{
-    background: url('./image/item.JPG') no-repeat;
+    background: url('./image/image-1.jpg') no-repeat;
     background-size: cover;
+}
+li{
+    color: white;
+    text-align: center;
 }
 .item_2{
     background: #3D5981;
