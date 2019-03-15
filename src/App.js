@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 // import './App.css';
 // import Project from "./components/index";
 // import InputRef from "./ref/InputRef";
-import Form from "./form-registration/Form";
-import Lifecycle from "./Lifecycle/Lifecycle";
+// import Form from "./form-registration/Form";
+// import Lifecycle from "./Lifecycle/Lifecycle";
+import Increment from './lifecycle_1/Increment';
 
 class App extends Component {
   render() {
@@ -11,7 +12,8 @@ class App extends Component {
       // <Project />
       // <InputRef />
       // <Form />
-      <Lifecycle />
+      // <Lifecycle />
+      <Increment />
     );
   }
 }
