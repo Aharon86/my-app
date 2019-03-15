@@ -1,14 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Number from './Number';
 
 class Increment extends Component{
-    click = () => {
-        alert(6546);
+    state = {
+        event: true
+    }
+    delete = () => {
+        this.setState({event: false})
     }
 
     render() {
         return (
-            <Number ev = {this.click}/>
+            <Fragment>
+                {this.state.event?<Number/>:null}
+                <button onClick = {this.delete}>Delete</button>
+            </Fragment>
         );
     }
 }

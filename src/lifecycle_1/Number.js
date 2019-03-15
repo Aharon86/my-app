@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 class Number extends Component{
     state = {
@@ -8,7 +8,13 @@ class Number extends Component{
         this.setState({i: this.state.i + 1})
     }
     componentDidMount() {
-        setInterval(this.incr, 1000);
+        this.interval = setInterval(this.incr, 1000);
+    }
+    componentWillUpdate(){
+        console.log(1)
+    }
+    componentWillUnmount(){
+        clearInterval(this.interval);
     }
     render() {
         return (
