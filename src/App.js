@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 // import InputRef from "./ref/InputRef";
 // import Form from "./form-registration/Form";
 // import Lifecycle from "./Lifecycle/Lifecycle";
-import Increment from './lifecycle_1/Increment';
+// import Increment from './lifecycle_1/Increment';
+import ChangeNumber from './popup/ChangeNumber';
 
 class App extends Component {
   render() {
@@ -13,7 +14,8 @@ class App extends Component {
       // <InputRef />
       // <Form />
       // <Lifecycle />
-      <Increment />
+      // <Increment />
+      <ChangeNumber />
     );
   }
 }
