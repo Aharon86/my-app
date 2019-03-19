@@ -24,8 +24,12 @@ body{
     padding: 10px;
     position: absolute;
 }
+$color: green;
 #homeButtons>*{
     margin: 10px;
+    &:hover{
+        color: $color;
+    }
 }
 #closeForm{
     background-color: white;

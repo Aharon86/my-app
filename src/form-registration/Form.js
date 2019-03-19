@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style_form.css';
+import './style_form.scss';
 import regExp from './regExp';
 import validInput from './validInput';
 import Li from './Li';
